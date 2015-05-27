@@ -7,15 +7,33 @@ import org.scalatest._
  */
 class WordCounterSpec extends FlatSpec with Matchers {
 
-  "A Word Counter" should "return None from an empty string" in {
-    val counter = new WordCounter("")
-    counter wordsAndCounts() should have size 0
+  "A Word Counter" should "return an empty list from an empty string" in {
+    new WordCounter("") wordsAndCounts() should have size 0
+  }
+
+  it should "return an empty list from a string with punctuation" in {
+    new WordCounter(".") wordsAndCounts() should have size 0
+    new WordCounter("!") wordsAndCounts() should have size 0
+    new WordCounter("* %") wordsAndCounts() should have size 0
   }
 
   it should "return one word from a one word string" in {
     val counter = new WordCounter("the")
     counter wordsAndCounts() should have size 1
     counter wordsAndCounts() should contain (("the",1))
+  }
+
+  it should "return one word from a one number string" in {
+    val counter = new WordCounter("5")
+    counter wordsAndCounts() should have size 1
+    counter wordsAndCounts() should contain (("5",1))
+  }
+
+  it should "return two words from a one word, one number string" in {
+    val counter = new WordCounter("The 1.")
+    counter wordsAndCounts() should have size 2
+    counter wordsAndCounts() should contain (("the",1))
+    counter wordsAndCounts() should contain (("1",1))
   }
 
   it should "read words from a file" in {
