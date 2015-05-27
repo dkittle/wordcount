@@ -36,8 +36,14 @@ case class WordCounter(sourceText: String) {
 }
 
 object WordCounter extends App {
+
   if (args.length == 0) {
     println("You must give me a filename to read and parse.")
+    println("e.g. sbt \"run [filename]\"")
+    System.exit(0)
   }
-  println("Hello World: " + (args mkString ", "))
+  try {
+    val counter = new WordCounter(scala.io.Source.fromFile("src/test/resources/writing.txt").getLines.mkString)
+  }
+  finally {}
 }
