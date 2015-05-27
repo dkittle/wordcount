@@ -17,4 +17,4 @@ Please include a test suite demonstrating the correctness of your solution and a
 
 # Submission
 
-The preferred way to submit a response to this task is as a Github repository. Alternatively, you may submit a zip file containing the source code for your solution.
+The preferred way to submit a response to this task is as a Github repository. Alternatively, you may submit a zip file containing the source code for your solution.  Update the My Submission section below with details for your application.
