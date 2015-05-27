@@ -32,5 +32,5 @@ To run the tests use:
 
     $ sbt test
 
-I've not provided any accessor to get the number of occurances for a specific word.  I'd likely want to transform the List to a Map of word -> count for this functionalty.  It's outside the scope of the intial requirements, though.
+I've not provided any accessor to get the number of occurences for a specific word.  I'd likely want to transform the List to a Map of word -> count for this functionalty.  It's outside the scope of the intial requirements, though.
 
