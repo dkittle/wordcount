@@ -21,12 +21,14 @@ class WordCounterSpec extends FlatSpec with Matchers {
     val counter = new WordCounter("the")
     counter wordsAndCounts() should have size 1
     counter wordsAndCounts() should contain (("the",1))
+    counter countOfAllWords() should be (1)
   }
 
   it should "return one word from a one number string" in {
     val counter = new WordCounter("5")
     counter wordsAndCounts() should have size 1
     counter wordsAndCounts() should contain (("5",1))
+    counter countOfAllWords() should be (1)
   }
 
   it should "return two words from a one word, one number string" in {
@@ -34,11 +36,12 @@ class WordCounterSpec extends FlatSpec with Matchers {
     counter wordsAndCounts() should have size 2
     counter wordsAndCounts() should contain (("the",1))
     counter wordsAndCounts() should contain (("1",1))
+    counter countOfAllWords() should be (2)
   }
 
   it should "read words from a file" in {
     val counter = new WordCounter(scala.io.Source.fromFile("src/test/resources/writing.txt").getLines.mkString)
-    val text = counter.sourceText
+    counter countOfAllWords() should be (239)
     counter wordsAndCounts() should contain (("the",23))
     counter wordsAndCounts() should contain (("narrative",2))
     counter wordsAndCounts() should contain (("convivial",2))
