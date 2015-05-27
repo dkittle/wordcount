@@ -47,6 +47,7 @@ object WordCounter extends App {
     println("e.g. sbt \"run [filename]\"")
     System.exit(0)
   }
+
   try {
     val counter = new WordCounter(scala.io.Source.fromFile(args(0)).getLines.mkString)
     outputFileStats(counter)
