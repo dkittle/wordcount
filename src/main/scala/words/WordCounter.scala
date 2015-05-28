@@ -12,16 +12,16 @@ case class WordCounter(sourceText: String) {
 
   val listOfCountedWords = parseWords()
 
-  def wordsAndCounts() = {
+  def wordsAndCounts = {
     listOfCountedWords
   }
 
-  def countOfAllWords() = {
+  def countOfAllWords = {
     listOfCountedWords.foldLeft(0)(_ + _._2)
   }
 
   /**
-   * Arguably not very efficient if countWords is called more than once
+   * Parse a string into words and the number of times they appear in the string.
    * @return List of tuples with word and # times it appears in string
    */
   private def parseWords(): List[(String, Int)] = {
@@ -56,9 +56,9 @@ object WordCounter extends App {
   }
   
   def outputFileStats(counter: WordCounter) = {
-    println(s"The file contains ${counter.countOfAllWords()} words")
-    println("The top 10 words by the number of times they occurr are:")
-    val topTen = counter wordsAndCounts() take 10
+    println(s"The file contains ${counter.countOfAllWords} words")
+    println("The top 10 words by the number of times they occur are:")
+    val topTen = counter.wordsAndCounts take 10
     for((word, count) <- topTen) {
       println(s" '${word}' appears ${count} time${if (count > 1) "s" else ""}")
     }
